@@ -25,6 +25,16 @@ def mask_account_card(card_info: str) -> str:
         return "Проверьте правильность ввода"
 
 
+def get_date(date: str) -> str:
+    """ Функция для перевода даты из формата 'ГГГГ-ММ-ДДTЧЧ:ММ:СС.СССССС' 'ДД.ММ.ГГГГ' в """
+    new_date = date[8:10] + "." + date[5:7] + "." + date[0:4]
+    return new_date
+
+
 # if __name__ == "__main__":
-#     card_info = "Счет 73654108430135874305"
+#     card_info = "Maestro 1596837868705199"
 #     print(mask_account_card(card_info))
+#     card_info = "Счет 64686473678894779589"
+#     print(mask_account_card(card_info))
+#     date = "2024-03-11T02:26:18.671407"
+#     print(get_date(date))
