@@ -1,4 +1,4 @@
-from masks import get_mask_card_number, get_mask_account
+from masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(card_info: str) -> str:
@@ -15,11 +15,11 @@ def mask_account_card(card_info: str) -> str:
 
     if len(undefined_number) == 16:
         card_number = int("".join(undefined_number))
-        return "".join(comment) + get_mask_card_number(card_number)
+        return str("".join(comment) + get_mask_card_number(card_number))
 
     elif len(undefined_number) == 20:
         account_number = int("".join(undefined_number))
-        return "".join(comment) + get_mask_account(account_number)
+        return str("".join(comment) + get_mask_account(account_number))
 
     else:
         return "Проверьте правильность ввода"
