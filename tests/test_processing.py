@@ -3,6 +3,7 @@ import pytest
 from src.processing import filter_by_state, sort_by_date
 
 
+# тест фильтра по статусу
 @pytest.mark.parametrize(
     "session_info, state, result",
     [
@@ -58,6 +59,7 @@ def test_filter_by_state(session_info, state, result):
     assert filter_by_state(session_info, state) == result
 
 
+# тест сортировки по дате
 @pytest.mark.parametrize(
     "session_info, result",
     [

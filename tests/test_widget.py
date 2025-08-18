@@ -2,10 +2,8 @@ import pytest
 
 from src.widget import get_date, mask_account_card
 
-# def test_get_date():
-#     pass
 
-
+# тест маскировки данных
 @pytest.mark.parametrize(
     "info, mask_number",
     [
@@ -19,6 +17,7 @@ def test_mask_account_card(info, mask_number):
     assert mask_account_card(info) == mask_number
 
 
+# тест форматирования даты
 @pytest.mark.parametrize(
     "date, format_date",
     [
