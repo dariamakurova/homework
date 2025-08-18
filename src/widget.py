@@ -1,8 +1,8 @@
-from masks import get_mask_account, get_mask_card_number
+from src.masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(card_info: str) -> str:
-    """Функция, которая маскирует номер карты или счета в полученной строке с информауией"""
+    """Функция, которая маскирует номер карты или счета в полученной строке с информацией"""
     card_number = None
     account_number = None
     comment = []
@@ -27,14 +27,17 @@ def mask_account_card(card_info: str) -> str:
 
 def get_date(date: str) -> str:
     """ Функция для перевода даты из формата 'ГГГГ-ММ-ДДTЧЧ:ММ:СС.СССССС' 'ДД.ММ.ГГГГ' в """
-    new_date = date[8:10] + "." + date[5:7] + "." + date[0:4]
-    return new_date
+    if date:
+        new_date = date[8:10] + "." + date[5:7] + "." + date[0:4]
+        return new_date
+    else:
+        return "Дата не указана"
 
 
-# if __name__ == "__main__":
-#     card_info = "Maestro 1596837868705199"
-#     print(mask_account_card(card_info))
-#     card_info = "Счет 64686473678894779589"
-#     print(mask_account_card(card_info))
-#     date = "2024-03-11T02:26:18.671407"
-#     print(get_date(date))
+if __name__ == "__main__":
+    card_info = ""
+    print(mask_account_card(card_info))
+    card_info = "Счет 64686473678894779589"
+    print(mask_account_card(card_info))
+    date = ""
+    print(get_date(date))
