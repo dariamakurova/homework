@@ -34,10 +34,10 @@ def get_date(date: str) -> str:
         return "Дата не указана"
 
 
-if __name__ == "__main__":
-    card_info = ""
-    print(mask_account_card(card_info))
-    card_info = "Счет 64686473678894779589"
-    print(mask_account_card(card_info))
-    date = ""
-    print(get_date(date))
+# if __name__ == "__main__":
+#     card_info = ""
+#     print(mask_account_card(card_info))
+#     card_info = "Счет 64686473678894779589"
+#     print(mask_account_card(card_info))
+#     date = ""
+#     print(get_date(date))
