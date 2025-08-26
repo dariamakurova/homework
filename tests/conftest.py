@@ -88,3 +88,8 @@ def transactions_list():
           "from": "Счет 75106830613657916952",
           "to": "Счет 11776614605963066702"},
         {}]
+
+
+@pytest.fixture
+def transactions_empty():
+    return []

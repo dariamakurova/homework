@@ -1,6 +1,7 @@
 from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
 from tests.conftest import transactions_list
 
+# тестирование функции filter_by_currency:
 
 def test_filter_by_currency(transactions_list):
     result = filter_by_currency(transactions_list, "USD")
@@ -40,3 +41,15 @@ def test_filter_by_currency_not_in_list(transactions_list):
 def test_filter_by_currency_empty():
     result = filter_by_currency([], "USD")
     assert next(result, "Операций не найдено") == "Операций не найдено"
+
+
+# тестирование функции transaction_descriptions:
+
+def test_transaction_descriptions(transactions_list):
+    result = list(transaction_descriptions(transactions_list))
+    assert result == ["Перевод со счета на счет", "Перевод организации", "Перевод с карты на карту", None]
+
+
+def test_transaction_descriptions_empty(transactions_empty):
+    result = list(transactions_empty)
+    assert result == []
