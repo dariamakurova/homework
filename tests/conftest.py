@@ -44,50 +44,39 @@ def account_long():
 def account_empty():
     return ""
 
+
 @pytest.fixture
 def transactions_list():
-    return [{
-          "id": 939719570,
-          "state": "EXECUTED",
-          "date": "2018-06-30T02:08:58.425572",
-          "operationAmount": {
-              "amount": "9824.07",
-              "currency": {
-                  "name": "USD",
-                  "code": "USD"
-              }
-          },
-          "description": "Перевод со счета на счет",
-          "from": "Счет 75106830613657916952",
-          "to": "Счет 11776614605963066702"
-},
-        {"id": 939719571,
-          "state": "EXECUTED",
-          "date": "2018-07-29T02:08:58.425572",
-          "operationAmount": {
-              "amount": "8365.06",
-              "currency": {
-                  "name": "EUR",
-                  "code": "EUR"
-              }
-          },
-          "description": "Перевод организации",
-          "from": "Счет 75106830613657916952",
-          "to": "Счет 11776614605963066702"},
-        {"id": 939719572,
-          "state": "CANCELLED",
-          "date": "2018-07-28T02:08:58.425572",
-          "operationAmount": {
-              "amount": "35.37",
-              "currency": {
-                  "name": "USD",
-                  "code": "USD"
-              }
-          },
-          "description": "Перевод с карты на карту",
-          "from": "Счет 75106830613657916952",
-          "to": "Счет 11776614605963066702"},
-        {}]
+    return [
+        {
+            "id": 939719570,
+            "state": "EXECUTED",
+            "date": "2018-06-30T02:08:58.425572",
+            "operationAmount": {"amount": "9824.07", "currency": {"name": "USD", "code": "USD"}},
+            "description": "Перевод со счета на счет",
+            "from": "Счет 75106830613657916952",
+            "to": "Счет 11776614605963066702",
+        },
+        {
+            "id": 939719571,
+            "state": "EXECUTED",
+            "date": "2018-07-29T02:08:58.425572",
+            "operationAmount": {"amount": "8365.06", "currency": {"name": "EUR", "code": "EUR"}},
+            "description": "Перевод организации",
+            "from": "Счет 75106830613657916952",
+            "to": "Счет 11776614605963066702",
+        },
+        {
+            "id": 939719572,
+            "state": "CANCELLED",
+            "date": "2018-07-28T02:08:58.425572",
+            "operationAmount": {"amount": "35.37", "currency": {"name": "USD", "code": "USD"}},
+            "description": "Перевод с карты на карту",
+            "from": "Счет 75106830613657916952",
+            "to": "Счет 11776614605963066702",
+        },
+        {},
+    ]
 
 
 @pytest.fixture
