@@ -1,5 +1,6 @@
 from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
 from tests.conftest import transactions_list
+import pytest
 
 # тестирование функции filter_by_currency:
 
@@ -53,3 +54,21 @@ def test_transaction_descriptions(transactions_list):
 def test_transaction_descriptions_empty(transactions_empty):
     result = list(transactions_empty)
     assert result == []
+
+
+# тестирование функции card_number_generator:
+
+@pytest.mark.parametrize("start, stop, result", [
+    ("1", "5", ["0000 0000 0000 0001", "0000 0000 0000 0002", "0000 0000 0000 0003",
+              "0000 0000 0000 0004", "0000 0000 0000 0005"]),
+    ("9999", "10001", ["0000 0000 0000 9999", "0000 0000 0001 0000", "0000 0000 0001 0001"]),
+    ("-5", "6", ["Допустимый диапазон номеров карт: 0 - 9999999999999999"]),
+    ("9999999999999999", "10000000000000000", ["Допустимый диапазон номеров карт: 0 - 9999999999999999"]),
+    ("5", "5", ["0000 0000 0000 0005"]),
+    ("6", "5", [])])
+def test_card_number_generator(start, stop, result):
+    assert list(card_number_generator(start, stop)) == result
+
+
+
+
