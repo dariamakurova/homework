@@ -1,5 +1,7 @@
 from typing import Iterator, Any
 
+from tests.conftest import transactions_list
+
 
 def filter_by_currency(transactions: list[dict], currency: str) -> Iterator[Any]:
     """Функция возвращает итератор, который поочередно выдает транзакции, где валюта операции соответствует заданной"""
@@ -20,55 +22,57 @@ def card_number_generator(start: int, stop: int) -> Iterator[Any]:
         yield final_numb
 
 
-# if __name__ == "__main__":
+if __name__ == "__main__":
 
-#     transactions = [{
-#           "id": 939719570,
-#           "state": "EXECUTED",
-#           "date": "2018-06-30T02:08:58.425572",
-#           "operationAmount": {
-#               "amount": "9824.07",
-#               "currency": {
-#                   "name": "USD",
-#                   "code": "USD"
-#               }
-#           },
-#           "description": "Перевод со счета на счет",
-#           "from": "Счет 75106830613657916952",
-#           "to": "Счет 11776614605963066702"
-# },
-#         {"id": 939719571,
-#           "state": "EXECUTED",
-#           "date": "2018-06-30T02:08:58.425572",
-#           "operationAmount": {
-#               "amount": "9824.07",
-#               "currency": {
-#                   "name": "USD",
-#                   "code": "USD"
-#               }
-#           },
-#           "description": "Перевод организации",
-#           "from": "Счет 75106830613657916952",
-#           "to": "Счет 11776614605963066702"},
-#         {"id": 939719572,
-#           "state": "EXECUTED",
-#           "date": "2018-06-30T02:08:58.425572",
-#           "operationAmount": {
-#               "amount": "9824.07",
-#               "currency": {
-#                   "name": "EUR",
-#                   "code": "EUR"
-#               }
-#           },
-#           "description": "Перевод организации",
-#           "from": "Счет 75106830613657916952",
-#           "to": "Счет 11776614605963066702"}]
-#
-#
-#     # usd_transactions = filter_by_currency(transactions, "USD")
-#     # for _ in range(3):
-#     #     print(next(usd_transactions, "Операций больше нет"))
-#
-#     descriptions = transaction_descriptions(transactions)
-#     for _ in range(3):
-#         print(next(descriptions))
+    transactions = [{
+          "id": 939719570,
+          "state": "EXECUTED",
+          "date": "2018-06-30T02:08:58.425572",
+          "operationAmount": {
+              "amount": "9824.07",
+              "currency": {
+                  "name": "USD",
+                  "code": "USD"
+              }
+          },
+          "description": "Перевод со счета на счет",
+          "from": "Счет 75106830613657916952",
+          "to": "Счет 11776614605963066702"
+},
+        {"id": 939719571,
+          "state": "EXECUTED",
+          "date": "2018-06-30T02:08:58.425572",
+          "operationAmount": {
+              "amount": "9824.07",
+              "currency": {
+                  "name": "USD",
+                  "code": "USD"
+              }
+          },
+          "description": "Перевод организации",
+          "from": "Счет 75106830613657916952",
+          "to": "Счет 11776614605963066702"},
+        {"id": 939719572,
+          "state": "EXECUTED",
+          "date": "2018-06-30T02:08:58.425572",
+          "operationAmount": {
+              "amount": "9824.07",
+              "currency": {
+                  "name": "EUR",
+                  "code": "EUR"
+              }
+          },
+          "description": "Перевод организации",
+          "from": "Счет 75106830613657916952",
+          "to": "Счет 11776614605963066702"}]
+
+
+    usd_transactions = filter_by_currency(transactions, "RUB")
+    print(next(usd_transactions, "Операций не найдено"))
+    print(next(usd_transactions, "Операций не найдено"))
+
+
+    descriptions = transaction_descriptions(transactions)
+    for _ in range(3):
+        print(next(descriptions))
+
