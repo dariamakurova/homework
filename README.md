@@ -4,7 +4,7 @@
 
 ## Установка:
 Клонируйте репозиторий:
-git clone https://github.com/dariamakurova/homework_10_1.git
+git clone https://github.com/dariamakurova/homework_11_1.git
 
 ## Использование
 
