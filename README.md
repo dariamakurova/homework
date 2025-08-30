@@ -4,7 +4,7 @@
 
 ## Установка:
 Клонируйте репозиторий:
-git clone https://github.com/dariamakurova/homework_10_1.git
+git clone https://github.com/dariamakurova/homework_11_1.git
 
 ## Использование
 
@@ -12,6 +12,9 @@ git clone https://github.com/dariamakurova/homework_10_1.git
 - создавать маски для номера банковской карты и банковского счета
 при помощи функций get_card_mask и get_account_mask
 - фильтровать данные банковских операций по статусу (filter_by_state) и сортировать по дате (sort_by_date)
+- генерировать транзакции, отсортированные по заданной валюте (filter_by_currency)
+- поочередно выдавать описание транзакций из заданного списка транзакций (transaction_descriptions)
+- генерировать номера банковский харт формата ХХХХ ХХХХ ХХХХ ХХХХ в заданном диапазоне (card_number_generator)
 
 ## Тестирование
 
