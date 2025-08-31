@@ -1,10 +1,10 @@
 from functools import wraps
-from typing import Any
+from typing import Any, Optional
 
 from black.lines import Callable
 
 
-def log(filename):
+def log(filename: Optional[str] = None) -> Callable[Callable[..., Any], Callable[..., Any]]:
     """Декоратор логирует результаты выполнения функции
     - при успешном выполнении записывает "<name> OK
     - при любой ошибке пишет "<name> error: <exc>. Inputs <args>, <kwargs>"
