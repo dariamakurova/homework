@@ -8,7 +8,7 @@ def log(filename):
                 func(*args, **kwargs)
                 if filename:
                     with open(filename, "w", encoding="utf-8") as file:
-                        file.write(f'{func.__name__} OK\n')
+                        file.write(f'{func.__name__} OK')
                 else:
                     print(f'{func.__name__} OK')
             except Exception as e:
