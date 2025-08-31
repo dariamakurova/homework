@@ -64,3 +64,14 @@ def test_log_with_filename_error(capsys):  # тестирование декор
     divide(5, 0)
     out = capsys.readouterr().out
     assert out == "divide error: division by zero. Inputs: (5, 0), {}\n"
+
+
+def test_log_with_filename_ok(capsys):  # проверка, что в консоль ничего не выводится при заданном файле
+    @log(filename="mylog.txt")
+    def add(x, y):
+        return x + y
+
+    add(1, 2)
+    out = capsys.readouterr().out
+    assert out == ""
+

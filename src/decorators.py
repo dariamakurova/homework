@@ -1,7 +1,6 @@
 from functools import wraps
-from typing import Any, Optional
+from typing import Any, Optional, Callable
 
-from black.lines import Callable
 
 
 def log(filename: Optional[str] = None) -> Any:
