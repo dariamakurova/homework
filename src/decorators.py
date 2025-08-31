@@ -2,7 +2,6 @@ from functools import wraps
 from typing import Any, Optional, Callable
 
 
-
 def log(filename: Optional[str] = None) -> Any:
     """Декоратор логирует результаты выполнения функции
     - при успешном выполнении записывает "<name> OK
