@@ -1,16 +1,29 @@
+from functools import wraps
+
 def log(filename):
     def decorator(func):
+        @wraps(func)
         def wrapper(*args, **kwargs):
-            if filename:
-                with open(filename, "a") as file:
-                    try: func(*args, **kwargs)
-                    except ValueError as e:
+            try:
+                func(*args, **kwargs)
+                if filename:
+                    with open(filename, "a", encoding="utf-8") as file:
+                        file.write(f'{func.__name__} OK\n')
+                else:
+                    print(f'{func.__name__} OK')
+            except Exception as e:
+                if filename:
+                    with open(filename, "a", encoding="utf-8") as file:
                         file.write(f'{func.__name__} error: {e}. Inputs: {args}, {kwargs}')
-                file.write(f'{func.__name__} OK')
-            else:
-                try: func(*args, **kwargs)
-                except ValueError as e:
+                else:
                     print(f'{func.__name__} error: {e}. Inputs: {args}, {kwargs}')
-                print(f'{func.__name__} OK')
         return wrapper
     return decorator
+
+if __name__ == "__main__":
+    @log(filename="mylog.txt")
+    def my_function(x, y):
+        return x + y
+
+
+    my_function("f", 2)
