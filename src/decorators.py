@@ -1,9 +1,17 @@
 from functools import wraps
+from typing import Callable, Any, Optional
+
+from black.lines import Callable
+
 
 def log(filename):
-    def decorator(func):
+    """ Декоратор логирует результаты выполнения функции
+    - при успешном выполнении записывает "<name> OK
+    - при любой ошибке пишет "<name> error: <exc>. Inputs <args>, <kwargs>"
+    Логи записываются в файл, если указано название файла, в противном случае выводятся в консоль"""
+    def decorator(func: Callable[..., Any]) -> Callable[..., Any]:
         @wraps(func)
-        def wrapper(*args, **kwargs):
+        def wrapper(*args: Any, **kwargs: Any) -> None:
             try:
                 func(*args, **kwargs)
                 if filename:
@@ -19,11 +27,3 @@ def log(filename):
                     print(f'{func.__name__} error: {e}. Inputs: {args}, {kwargs}')
         return wrapper
     return decorator
-
-# if __name__ == "__main__":
-#     @log(filename="mylog.txt")
-#     def my_function(x, y):
-#         return x + y
-#
-#
-#     my_function("f", 2)
