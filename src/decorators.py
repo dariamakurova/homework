@@ -24,7 +24,7 @@ def log(filename: Optional[str] = None) -> Any:
                         file.write(f"{func.__name__} error: {e}. Inputs: {args}, {kwargs}")
                 else:
                     print(f"{func.__name__} error: {e}. Inputs: {args}, {kwargs}")
-
+            return func(*args, **kwargs)
         return wrapper
 
     return decorator
