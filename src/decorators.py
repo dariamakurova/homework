@@ -12,19 +12,27 @@ def log(filename: Optional[str] = None) -> Any:
         @wraps(func)
         def wrapper(*args: Any, **kwargs: Any) -> None:
             try:
-                func(*args, **kwargs)
+                result = func(*args, **kwargs)
                 if filename:
                     with open(filename, "w", encoding="utf-8") as file:
                         file.write(f"{func.__name__} OK")
                 else:
                     print(f"{func.__name__} OK")
+                return result
             except Exception as e:
                 if filename:
                     with open(filename, "w", encoding="utf-8") as file:
                         file.write(f"{func.__name__} error: {e}. Inputs: {args}, {kwargs}")
                 else:
                     print(f"{func.__name__} error: {e}. Inputs: {args}, {kwargs}")
-            return func(*args, **kwargs)
+                raise
         return wrapper
 
     return decorator
+
+
+# if __name__ == "__main__":
+#      @log()
+#      def add(a, b):
+#          return a / b
+#      print (add(3, 0))
