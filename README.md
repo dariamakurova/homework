@@ -4,7 +4,7 @@
 
 ## Установка:
 Клонируйте репозиторий:
-git clone https://github.com/dariamakurova/homework_11_1.git
+git clone https://github.com/dariamakurova/homework_10_1.git
 
 ## Использование
 
@@ -15,6 +15,8 @@ git clone https://github.com/dariamakurova/homework_11_1.git
 - генерировать транзакции, отсортированные по заданной валюте (filter_by_currency)
 - поочередно выдавать описание транзакций из заданного списка транзакций (transaction_descriptions)
 - генерировать номера банковский харт формата ХХХХ ХХХХ ХХХХ ХХХХ в заданном диапазоне (card_number_generator)
+- декоратор log логгирует выполнение функцииБ записывает результат выполнения в указанный файл, либо выводит в консоль, 
+если файл не задан
 
 ## Тестирование
 
