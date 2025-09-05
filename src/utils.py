@@ -3,7 +3,7 @@ from typing import Any, Callable
 
 
 def get_financial_operations(path: str) -> Any:
-    """ Получение списка словарей с финансовыми операциями из json файла"""
+    """Получение списка словарей с финансовыми операциями из json файла"""
 
     try:
         with open(path) as f:

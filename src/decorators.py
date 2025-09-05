@@ -26,6 +26,7 @@ def log(filename: Optional[str] = None) -> Any:
                 else:
                     print(f"{func.__name__} error: {e}. Inputs: {args}, {kwargs}")
                 raise
+
         return wrapper
 
     return decorator
