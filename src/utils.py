@@ -1,5 +1,6 @@
 import json
 
+
 def get_financial_operations(path: str) -> list[dict]:
     """ Получение списка словарей с финансовыми операциями из json файла"""
 
