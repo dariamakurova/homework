@@ -1,7 +1,8 @@
 import json
+from typing import Any, Callable
 
 
-def get_financial_operations(path: str) -> list[dict]:
+def get_financial_operations(path: str) -> Any:
     """ Получение списка словарей с финансовыми операциями из json файла"""
 
     try:

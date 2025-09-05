@@ -1,5 +1,5 @@
 from functools import wraps
-from typing import Any, Optional, Callable
+from typing import Any, Callable, Optional
 
 
 def log(filename: Optional[str] = None) -> Any:
@@ -10,7 +10,7 @@ def log(filename: Optional[str] = None) -> Any:
 
     def decorator(func: Callable[..., Any]) -> Callable[..., Any]:
         @wraps(func)
-        def wrapper(*args: Any, **kwargs: Any) -> None:
+        def wrapper(*args: Any, **kwargs: Any) -> Any:
             try:
                 result = func(*args, **kwargs)
                 if filename:
