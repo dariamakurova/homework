@@ -83,79 +83,45 @@ def transactions_list():
 def transactions_empty():
     return []
 
+
 @pytest.fixture
 def transaction_RUB():
     return {
-    "id": 654321,
-    "state": "EXECUTED",
-    "date": "2019-08-26T10:50:58.294041",
-    "operationAmount": {
-      "amount": "10000.99",
-      "currency": {
-        "name": "руб.",
-        "code": "RUB"
-      }
-    },
-    "description": "Перевод организации",
-    "from": "Maestro 1596837868705199",
-    "to": "Счет 64686473678894779589"
-  }
+        "id": 654321,
+        "state": "EXECUTED",
+        "date": "2019-08-26T10:50:58.294041",
+        "operationAmount": {"amount": "10000.99", "currency": {"name": "руб.", "code": "RUB"}},
+        "description": "Перевод организации",
+        "from": "Maestro 1596837868705199",
+        "to": "Счет 64686473678894779589",
+    }
 
 
 @pytest.fixture
 def transaction_USD():
     return {
-    "id": 123456,
-    "state": "EXECUTED",
-    "date": "2019-08-26T10:50:58.294041",
-    "operationAmount": {
-      "amount": "100.11",
-      "currency": {
-        "name": "USD",
-        "code": "USD"
-      }
-    },
-    "description": "Перевод организации",
-    "from": "Maestro 1596837868705199",
-    "to": "Счет 64686473678894779589"
-  }
-
-@pytest.fixture
-def transaction_RUB():
-    return {
-    "id": 654321,
-    "state": "EXECUTED",
-    "date": "2019-08-26T10:50:58.294041",
-    "operationAmount": {
-      "amount": "10000.99",
-      "currency": {
-        "name": "руб.",
-        "code": "RUB"
-      }
-    },
-    "description": "Перевод организации",
-    "from": "Maestro 1596837868705199",
-    "to": "Счет 64686473678894779589"
-  }
+        "id": 123456,
+        "state": "EXECUTED",
+        "date": "2019-08-26T10:50:58.294041",
+        "operationAmount": {"amount": "100.11", "currency": {"name": "USD", "code": "USD"}},
+        "description": "Перевод организации",
+        "from": "Maestro 1596837868705199",
+        "to": "Счет 64686473678894779589",
+    }
 
 
 @pytest.fixture
 def transaction_broken():
     return {
-    "id": 123456,
-    "state": "EXECUTED",
-    "date": "2019-08-26T10:50:58.294041",
-    "": {
-      "": "100.11",
-      "currency": {
-        "name": "USD",
-        "code": "USD"
-      }
-    },
-    "description": "Перевод организации",
-    "from": "Maestro 1596837868705199",
-    "to": "Счет 64686473678894779589"
-  }
+        "id": 123456,
+        "state": "EXECUTED",
+        "date": "2019-08-26T10:50:58.294041",
+        "": {"": "100.11", "currency": {"name": "USD", "code": "USD"}},
+        "description": "Перевод организации",
+        "from": "Maestro 1596837868705199",
+        "to": "Счет 64686473678894779589",
+    }
+
 
 @pytest.fixture
 def transaction_YY():
@@ -163,14 +129,8 @@ def transaction_YY():
         "id": 654321,
         "state": "EXECUTED",
         "date": "2019-08-26T10:50:58.294041",
-        "operationAmount": {
-            "amount": "10000.99",
-            "currency": {
-                "name": "YY",
-                "code": "YY"
-            }
-        },
+        "operationAmount": {"amount": "10000.99", "currency": {"name": "YY", "code": "YY"}},
         "description": "Перевод организации",
         "from": "Maestro 1596837868705199",
-        "to": "Счет 64686473678894779589"
+        "to": "Счет 64686473678894779589",
     }

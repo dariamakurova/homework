@@ -19,17 +19,18 @@ def convert_transaction_amount(transaction: dict) -> Optional[float]:
             amount = float(transaction_amount)
             return amount
         elif currency in ["USD", "EUR"]:
-                try:
-                    url = (
+            try:
+                url = (
                     f"https://api.apilayer.com/exchangerates_data/convert?to=RUB&from={currency}&amount="
-                    f"{transaction_amount}")
-                    headers = {"apikey": EXCHANGE_API_KEY}
-                    response = requests.get(url, headers=headers, data={})
-                    amount = round((response.json()["result"]), 2)
-                    return float(amount)
-                except requests.exceptions.RequestException:
-                    print("Ошибка подключения к сервису конвертации")
-                    return None
+                    f"{transaction_amount}"
+                )
+                headers = {"apikey": EXCHANGE_API_KEY}
+                response = requests.get(url, headers=headers, data={})
+                amount = round((response.json()["result"]), 2)
+                return float(amount)
+            except requests.exceptions.RequestException:
+                print("Ошибка подключения к сервису конвертации")
+                return None
         else:
             return None
     except TypeError:
