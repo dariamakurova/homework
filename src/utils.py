@@ -9,6 +9,8 @@ def get_financial_operations(path: str) -> Any:
         with open(path) as f:
             try:
                 financial_operations = json.load(f)
+                if type(financial_operations) != list:
+                    return []
             except json.JSONDecodeError:
                 return []
     except FileNotFoundError:
