@@ -30,10 +30,3 @@ def log(filename: Optional[str] = None) -> Any:
         return wrapper
 
     return decorator
-
-
-# if __name__ == "__main__":
-#      @log()
-#      def add(a, b):
-#          return a / b
-#      print (add(3, 0))
