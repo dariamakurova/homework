@@ -30,12 +30,12 @@ def convert_transaction_amount(transaction: dict) -> Optional[float]:
                 return float(amount)
             except requests.exceptions.RequestException:
                 print("Ошибка подключения к сервису конвертации")
-                return None
+                return 0.00
         else:
-            return None
+            return 0.00
     except TypeError:
         print("Некорректные данные о транзакции")
-        return None
+        return 0.00
     except KeyError:
         print("Некорректные данные о транзакции")
-        return None
+        return 0.00

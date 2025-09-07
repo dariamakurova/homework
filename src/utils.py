@@ -10,9 +10,12 @@ def get_financial_operations(path: str) -> Any:
             try:
                 financial_operations = json.load(f)
                 if isinstance(financial_operations, list):
-                    return []
+                    return financial_operations
+                else: return []
             except json.JSONDecodeError:
                 return []
     except FileNotFoundError:
         return []
-    return financial_operations
+
+if __name__ == "__main__":
+    print(get_financial_operations('/Users/dariamakurova/PycharmProjects/Homework/data/for_testing_not_list.json'))

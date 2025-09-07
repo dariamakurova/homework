@@ -37,13 +37,13 @@ def test_convert_transaction_amount_RUB(transaction_RUB):
 # тестирование работы функции при отсутствии транзакции
 def test_convert_transaction_no_transaction():
     result = convert_transaction_amount("")
-    assert result is None
+    assert result == 0.00
 
 
 # тестирование работы функции при неполных сведениях в транзакции - KeyError
 def test_convert_transaction_key_error(transaction_broken):
     result = convert_transaction_amount(transaction_broken)
-    assert result is None
+    assert result == 0.00
 
 
 # тестирование работы функции при ошибке подключения
@@ -54,7 +54,7 @@ def test_convert_transaction_amount_USD_connection_error(transaction_USD, capsys
     headers = {"apikey": EXCHANGE_API_KEY}
 
     with patch("src.external_api.requests.get", side_effect=requests.exceptions.RequestException()) as mock_get:
-        assert convert_transaction_amount(transaction_USD) is None
+        assert convert_transaction_amount(transaction_USD) == 0.00
         mock_get.assert_called_once_with(
             "https://api.apilayer.com/exchangerates_data/convert?to=RUB&from=USD&amount=100.11",
             headers=headers,
@@ -67,4 +67,4 @@ def test_convert_transaction_amount_USD_connection_error(transaction_USD, capsys
 # тестирование работы функции с неизвестной валютой
 def test_convert_transaction_YY(transaction_YY):
     result = convert_transaction_amount(transaction_YY)
-    assert result is None
+    assert result == 0.00
