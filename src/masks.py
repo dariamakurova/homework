@@ -1,6 +1,5 @@
 import logging
 
-
 masks_logger = logging.getLogger('masks_logger')
 masks_handler = logging.FileHandler('/Users/dariamakurova/PycharmProjects/Homework/logs/masks.log', mode='w')
 masks_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s: %(message)s')

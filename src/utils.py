@@ -1,8 +1,7 @@
 
 import json
-from typing import Any
 import logging
-
+from typing import Any
 
 utils_logger = logging.getLogger('utils_logger')
 utils_handler = logging.FileHandler('/Users/dariamakurova/PycharmProjects/Homework/logs/utils.log', mode='w')
