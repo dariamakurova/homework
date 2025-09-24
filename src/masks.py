@@ -1,3 +1,14 @@
+import logging
+
+
+logger = logging.getLogger('masks_logger')
+masks_handler = logging.FileHandler('/Users/dariamakurova/PycharmProjects/Homework/logs/masks.log', mode='w')
+masks_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s: %(message)s')
+masks_handler.setFormatter(masks_formatter)
+logger.addHandler(masks_handler)
+logger.setLevel(logging.DEBUG)
+
+
 def get_mask_card_number(card_number: int) -> str:
     """преобразование номера карты клиента в маску вида XXXX XX** **** XXXX"""
 

@@ -1,5 +1,14 @@
 import json
 from typing import Any
+import logging
+
+
+logger = logging.getLogger('utils_logger')
+utils_handler = logging.FileHandler('/Users/dariamakurova/PycharmProjects/Homework/logs/utils.log', mode='w')
+utils_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s: %(message)s')
+utils_handler.setFormatter(utils_formatter)
+logger.addHandler(utils_handler)
+logger.setLevel(logging.DEBUG)
 
 
 def get_financial_operations(path: str) -> Any:
