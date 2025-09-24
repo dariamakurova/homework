@@ -1,3 +1,4 @@
+
 import json
 from typing import Any
 import logging
@@ -31,6 +32,3 @@ def get_financial_operations(path: str) -> Any:
     except FileNotFoundError:
         utils_logger.error('Файл не найден')
         return []
-
-if __name__ == "__main__":
-    print(get_financial_operations('/Users/dariamakurova/PycharmProjects/Homework/data/for_testing_not_list.json'))

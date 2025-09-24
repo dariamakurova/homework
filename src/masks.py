@@ -47,4 +47,3 @@ def get_mask_account(account: int) -> str:
             return "Номер должен состоять только из цифр без пробелов"
     masks_logger.error('Отсутствует номер счета')
     return "Номер счета не указан"
-
