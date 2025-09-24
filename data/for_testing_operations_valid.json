@@ -1,0 +1,23 @@
+[
+  {
+    "id": 441945886,
+    "operationAmount": {
+      "amount": "31957.58",
+      "currency": {
+        "name": "руб.",
+        "code": "RUB"}}},
+  {
+    "id": 41428829,
+    "operationAmount": {
+      "amount": "8221.37",
+      "currency": {
+        "name": "USD",
+        "code": "USD"}}},
+  {
+    "id": 939719570,
+    "operationAmount": {
+      "amount": "9824.07",
+      "currency": {
+        "name": "USD",
+        "code": "USD"}}}
+]

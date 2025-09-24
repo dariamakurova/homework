@@ -18,7 +18,7 @@ def test_log_with_filename_type_error():  # тестирование декор�
     def add(x, y):
         return x + y
 
-    with pytest.raises(TypeError, match="can only concatenate str \(not \"int\"\) to str"):
+    with pytest.raises(TypeError, match=r"can only concatenate str \(not \"int\"\) to str"):
         add("f", 2)
 
     with open("mylog.txt", "r", encoding="utf-8") as file:
@@ -54,7 +54,7 @@ def test_log_nofilename_type_error(capsys):  # тестирование деко
     def add(x, y):
         return x + y
 
-    with pytest.raises(TypeError, match="can only concatenate str \(not \"int\"\) to str"):
+    with pytest.raises(TypeError, match=r"can only concatenate str \(not \"int\"\) to str"):
         add("f", 2)
 
     out = capsys.readouterr().out
