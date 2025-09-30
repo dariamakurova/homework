@@ -1,5 +1,3 @@
-import os
-import csv
 import pandas as pd
 
 
@@ -9,7 +7,14 @@ def get_transactions_from_csv(path: str) -> list:
     transactions_dict = transactions.to_dict(orient='records')
     return transactions_dict
 
+
+def get_transactions_from_excel(path: str) -> list:
+    """Получение списка транзакций из .xlsx файла"""
+    transactions = pd.read_excel(path)
+    transactions_dict = transactions.to_dict(orient='records')
+    return transactions_dict
+
 # project_dir = os.path.dirname(os.path.dirname(__file__))
-# log_dir = os.path.join(project_dir, 'data', 'transactions.csv')
+# log_dir = os.path.join(project_dir, 'data', 'transactions_excel.xlsx')
 #
-# print(type(get_transactions_from_csv(log_dir)))
+# print(get_transactions_from_excel(log_dir))
