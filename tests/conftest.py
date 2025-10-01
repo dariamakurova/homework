@@ -1,4 +1,5 @@
 import pytest
+import os
 
 
 # фикстуры для номеров карт
@@ -134,3 +135,9 @@ def transaction_YY():
         "from": "Maestro 1596837868705199",
         "to": "Счет 64686473678894779589",
     }
+
+@pytest.fixture
+def transactions_path():
+    project_dir = os.path.dirname(os.path.dirname(__file__))
+    log_dir = os.path.join(project_dir, 'data', 'transactions.csv')
+    return log_dir
