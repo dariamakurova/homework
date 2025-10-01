@@ -7,12 +7,12 @@ def get_transactions_from_csv(path: str, file_delimiter: str =';') -> list:
     if os.path.exists(path):
         try:
             transactions = pd.read_csv(path, delimiter=file_delimiter).to_dict(orient='records')
-        except pd.errors.EmptyDataError:
-            raise ValueError(f'Файл {path} пуст')
         except pd.errors.ParserError:
-            raise ValueError(f'Ошибка чтения CSV. Проверь разделитель (сейчас: "{file_delimiter}") или формат данных.')
+            print(f'Ошибка чтения CSV. Проверьте разделитель или формат данных.')
+            return []
     else:
-        raise FileNotFoundError(f'Файл {path} не найден')
+        print(f'Файл {path} не найден')
+        return []
     return transactions
 
 
@@ -21,12 +21,9 @@ def get_transactions_from_excel(path: str) -> list:
     if os.path.exists(path):
         try:
             transactions = pd.read_excel(path).to_dict(orient='records')
-        except pd.errors.EmptyDataError:
-            raise ValueError(f'Файл {path} пуст')
+        except ValueError:
+            return []
     else:
-        raise FileNotFoundError(f'Файл {path} не найден')
+        print(f'Файл {path} не найден')
+        return []
     return transactions
-
-# project_dir = os.path.dirname(os.path.dirname(__file__))
-# log_dir = os.path.join(project_dir, 'data', 'transactions.csv')
-
