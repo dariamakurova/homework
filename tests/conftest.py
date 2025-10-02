@@ -1,5 +1,5 @@
+
 import pytest
-import os
 
 
 # фикстуры для номеров карт
