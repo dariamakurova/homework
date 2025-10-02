@@ -18,12 +18,13 @@ def get_transactions_from_csv(path: str, file_delimiter: str = ";") -> Optional[
     return transactions
 
 
-def get_transactions_from_excel(path: str) -> list:
+def get_transactions_from_excel(path: str) -> list[dict]:
     """Получение списка транзакций из .xlsx файла"""
     if os.path.exists(path):
         try:
             transactions = pd.read_excel(path).to_dict(orient="records")
-        except ValueError:
+        except ValueError as e:
+            print(f'Ошибка {e}')
             return []
     else:
         print(f"Файл {path} не найден")
