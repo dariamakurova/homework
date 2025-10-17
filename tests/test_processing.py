@@ -1,7 +1,6 @@
 import pytest
 
-from src.processing import filter_by_state, sort_by_date, process_bank_search
-from tests.conftest import transactions_list
+from src.processing import filter_by_state, process_bank_search, sort_by_date
 
 
 # тест фильтра по статусу
@@ -97,10 +96,12 @@ def test_filter_by_state(session_info, state, result):
 def test_sort_by_date(session_info, result):
     assert sort_by_date(session_info) == result
 
+
 # тест сортировки операций по описанию
 
+
 def test_process_bank_search(transactions_list):
-    assert process_bank_search(transactions_list, 'перевод') == [
+    assert process_bank_search(transactions_list, "перевод") == [
         {
             "id": 939719570,
             "state": "EXECUTED",
@@ -127,11 +128,13 @@ def test_process_bank_search(transactions_list):
             "description": "Перевод с карты на карту",
             "from": "Счет 75106830613657916952",
             "to": "Счет 11776614605963066702",
-        }
+        },
     ]
 
+
 def test_process_bank_search_empty(transactions_empty):
-    assert process_bank_search(transactions_empty, 'тест') == []
+    assert process_bank_search(transactions_empty, "тест") == []
+
 
 def test_process_bank_search_no_match(transactions_list):
-    assert process_bank_search(transactions_list, 'несуществующее описание') == []
+    assert process_bank_search(transactions_list, "несуществующее описание") == []

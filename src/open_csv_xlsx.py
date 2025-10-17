@@ -24,7 +24,7 @@ def get_transactions_from_excel(path: str) -> list[dict]:
         try:
             transactions = pd.read_excel(path).to_dict(orient="records")
         except ValueError as e:
-            print(f'Ошибка {e}')
+            print(f"Ошибка {e}")
             return []
     else:
         print(f"Файл {path} не найден")
