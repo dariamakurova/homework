@@ -22,10 +22,3 @@ def process_bank_search(data:list[dict], search:str)->list[dict]:
     а возвращает список словарей, у которых в описании есть данная строка"""
     # pattern = re.compile(search)
     return [element for element in data if isinstance(element.get("description"), str) and re.search(search, element["description"], re.IGNORECASE)]
-
-
-if __name__ == "__main__":
-    transactions = get_transactions_from_csv("/Users/dariamakurova/PycharmProjects/Homework/data/transactions.csv")
-    # print(transactions)
-    result = process_bank_search(transactions, ' gehuf')
-    print(result)
