@@ -41,8 +41,3 @@ def process_bank_operations(data:list[dict], categories:list)->dict:
     for category, amount in matched_operations.items():
         result[category] = amount
     return result
-
-if __name__ == "__main__":
-    data = get_transactions_from_csv('/Users/dariamakurova/PycharmProjects/Homework/data/transactions.csv')
-    categories = ['Перевод организации', 'Открытие вклада', 'Неизвестная операция']
-    print(process_bank_operations(data, categories))
