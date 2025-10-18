@@ -1,6 +1,6 @@
 import pytest
 
-from src.processing import filter_by_state, process_bank_search, sort_by_date, process_bank_operations
+from src.processing import filter_by_state, process_bank_operations, process_bank_search, sort_by_date
 
 
 # тест фильтра по статусу
@@ -142,18 +142,20 @@ def test_process_bank_search_no_match(transactions_list):
 
 # тест получения сводки по категориям операций
 
+
 def test_process_bank_operations(transactions_list):
-    categories = ['Перевод организации', 'Перевод с карты на карту']
+    categories = ["Перевод организации", "Перевод с карты на карту"]
     assert process_bank_operations(transactions_list, categories) == {
-        'Перевод организации': 1,
-        'Перевод с карты на карту': 1,}
+        "Перевод организации": 1,
+        "Перевод с карты на карту": 1,
+    }
 
 
 def test_process_bank_operations_empty(transactions_empty):
-    categories = ['Перевод организации', 'Перевод с карты на карту']
+    categories = ["Перевод организации", "Перевод с карты на карту"]
     assert process_bank_operations(transactions_empty, categories) == {}
 
 
 def test_process_bank_operations_non_exist(transactions_list):
-    categories = ['Несуществующая категория']
+    categories = ["Несуществующая категория"]
     assert process_bank_operations(transactions_list, categories) == {}

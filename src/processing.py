@@ -1,9 +1,5 @@
 import re
-from collections import Counter, defaultdict
-
-from mypy.checkexpr import defaultdict
-
-from src.open_csv_xlsx import get_transactions_from_csv
+from collections import Counter
 
 
 def filter_by_state(list_of_dicts: list[dict], state: str = "EXECUTED") -> list[dict]:
@@ -30,13 +26,19 @@ def process_bank_search(data: list[dict], search: str) -> list[dict]:
         if isinstance(element.get("description"), str) and re.search(search, element["description"], re.IGNORECASE)
     ]
 
-def process_bank_operations(data:list[dict], categories:list)->dict:
+
+def process_bank_operations(data: list[dict], categories: list) -> dict:
     """Функцию, которая принимает список словарей с данными о банковских операциях и список категорий операций,
     а возвращает словарь, в котором ключи — это названия категорий,
     а значения — это количество операций в каждой категории."""
 
-    matched_operations = Counter([element["description"] for element in data if isinstance(element.get("description"), str)
-                          and element["description"] in categories])
+    matched_operations = Counter(
+        [
+            element["description"]
+            for element in data
+            if isinstance(element.get("description"), str) and element["description"] in categories
+        ]
+    )
     result = {}
     for category, amount in matched_operations.items():
         result[category] = amount
