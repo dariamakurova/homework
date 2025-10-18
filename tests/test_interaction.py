@@ -1,6 +1,6 @@
 from unittest.mock import patch
 
-from src.interaction import get_menu_choice, get_status_choice
+from src.interaction import get_menu_choice, get_status_choice, get_choice_from_options
 
 
 # тестирование get_menu_choice
@@ -49,3 +49,19 @@ def test_get_status_choice_wrong(capsys):
     out = capsys.readouterr().out.strip().splitlines()
     assert out[0] == 'Статус операции "TEST" недоступен.'
     assert out[2] == 'Операции отфильтрованы по статусу "CANCELED"'
+
+
+# тестирование get_choice_from_options
+
+def test_get_choice_from_options():
+    with patch("builtins.input", return_value="да"):
+        assert get_choice_from_options("да", "нет" ) == "да"
+    with patch("builtins.input", return_value="нет"):
+        assert get_choice_from_options("да", "нет" ) == "нет"
+
+
+def test_get_choice_from_options_wrong(capsys):
+    with patch("builtins.input", side_effect=["test", "да"]):
+        get_choice_from_options("да", "нет")
+    out = capsys.readouterr().out.strip().splitlines()
+    assert out[0] == 'Выберите да или нет'
