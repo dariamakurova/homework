@@ -1,3 +1,8 @@
+import re
+
+from src.widget import get_date, mask_account_card
+
+
 def get_menu_choice() -> str | None:
     """Функция, которая выводит наименование выбранного пункта меню"""
 
@@ -43,3 +48,17 @@ def get_choice_from_options(option_1: str, option_2: str) -> str | None:
             return user_choice
         else:
             print( f'Выберите {option_1} или {option_2}')
+
+
+def transaction_formatted_info(transaction: dict) -> str:
+    """ Функция, которая выводит информацию о транзакции в заданном формате"""
+    transaction_format = ""
+    if isinstance(transaction.get("description"), str) and re.search("перевод", transaction["description"], re.IGNORECASE):
+        transaction_format = (f'{get_date(transaction["date"])} {transaction["description"]}\n'
+                              f'{mask_account_card(transaction.get("from"))} -> {mask_account_card(transaction.get("to"))}\n'
+                              f'Сумма: {transaction.get("operationAmount", {}).get("amount", {})} {transaction.get("operationAmount", {}).get("currency", {}).get("name")}\n')
+    else:
+        transaction_format = (f'{get_date(transaction["date"])} {transaction["description"]}\n'
+                              f'{mask_account_card(transaction.get("to"))}\n'
+                              f'Сумма: {transaction["operationAmount"].get("amount")} {transaction["operationAmount"]["currency"].get("name")}\n')
+    return transaction_format
