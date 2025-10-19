@@ -4,7 +4,7 @@
 
 ## Установка:
 Клонируйте репозиторий:
-git clone https://github.com/dariamakurova/homework_10_1.git
+git clone https://github.com/dariamakurova/homework.git
 
 ## Использование
 
@@ -18,6 +18,9 @@ git clone https://github.com/dariamakurova/homework_10_1.git
 - декоратор log логгирует выполнение функцииБ записывает результат выполнения в указанный файл, либо выводит в консоль, 
 если файл не задан
 - получать транзакции из файлов .csv и .xlsx (open_csv_xlsx)
+- модуль interaction отвечает за взаимодействие с пользователем
+
+ЗАПУСК ВСЕЙ ПРОГРАММЫ ОСУЩЕСТВЛЯЕТСЯ ЧЕРЕЗ main.py
 
 ## Тестирование
 
