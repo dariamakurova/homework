@@ -38,7 +38,7 @@ def get_choice_from_options(option_1: str, option_2: str) -> str | None:
 
     while True:
         user_choice = input().lower()
-        available_options = [option_1, option_2]
+        available_options = [option_1.lower(), option_2.lower()]
         if user_choice.lower() in available_options:
             return user_choice
         else:
