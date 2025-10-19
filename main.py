@@ -1,11 +1,10 @@
 import os
 
 from src.generators import filter_by_currency
-from src.interaction import get_menu_choice, get_status_choice, get_choice_from_options
+from src.interaction import get_choice_from_options, get_menu_choice, get_status_choice, transaction_formatted_info
 from src.open_csv_xlsx import get_transactions_from_csv, get_transactions_from_excel
 from src.processing import filter_by_state, process_bank_search, sort_by_date
 from src.utils import get_financial_operations
-from src.widget import get_date
 
 
 def main():
@@ -26,10 +25,13 @@ def main():
     status_choice = get_status_choice()
 
 # запрашиваем параметры фильтрации
+    print("")
     print("Отсортировать операции по дате? Да/Нет")
     date_filtration = get_choice_from_options("Да", "Нет")
-    print("Отсортировать по возрастанию или по убыванию?")
-    reverse = get_choice_from_options("По возрастанию", "По убыванию")
+    reverse = None
+    if date_filtration == "да":
+        print("Отсортировать по возрастанию или по убыванию?")
+        reverse = get_choice_from_options("По возрастанию", "По убыванию")
     print("Выводить только рублевые транзакции? Да/Нет")
     rub_transactions = get_choice_from_options("Да", "Нет")
     print("Отфильтровать список транзакций по определенному слову в описании? Да/Нет")
@@ -51,6 +53,7 @@ def main():
 # фильтруем по установленному статусу
 
     transactions_by_state = filter_by_state(user_transactions, status_choice)
+
 
 # фильтруем рублевые при необходимости
 
@@ -79,14 +82,15 @@ def main():
         transactions_sorted = transactions_by_word
 # выводим итоговый список транзакций
 
-    print('Распечатываю итоговый список транзакций...')
-    print(f'\nВсего банковских операций в выборке: {len(transactions_sorted)}')
+    print('Распечатываю итоговый список транзакций...\n')
 
-    for transaction in transactions_sorted:
-        print(f'{get_date(transaction["date"])} {transaction["description"]}')
+    if transactions_sorted:
+        print(f'\nВсего банковских операций в выборке: {len(transactions_sorted)}\n')
+        for transaction in transactions_sorted:
+            print(transaction_formatted_info(transaction))
 
-
-
+    else:
+        print("Не найдено ни одной транзакции, подходящей под ваши условия фильтрации")
 
 
 if __name__ == "__main__":

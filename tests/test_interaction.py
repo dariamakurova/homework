@@ -1,6 +1,6 @@
 from unittest.mock import patch
 
-from src.interaction import get_menu_choice, get_status_choice, get_choice_from_options, transaction_formatted_info
+from src.interaction import get_choice_from_options, get_menu_choice, get_status_choice, transaction_formatted_info
 
 
 # тестирование get_menu_choice
@@ -55,9 +55,9 @@ def test_get_status_choice_wrong(capsys):
 
 def test_get_choice_from_options():
     with patch("builtins.input", return_value="да"):
-        assert get_choice_from_options("да", "нет" ) == "да"
+        assert get_choice_from_options("да", "нет") == "да"
     with patch("builtins.input", return_value="нет"):
-        assert get_choice_from_options("да", "нет" ) == "нет"
+        assert get_choice_from_options("да", "нет") == "нет"
 
 
 def test_get_choice_from_options_wrong(capsys):
@@ -68,42 +68,40 @@ def test_get_choice_from_options_wrong(capsys):
 
 # тестирование форматирования вывода информации о транзакции
 
+
 def test_transaction_formatted_info_trans():
-   transaction = {
-    "id": 214024827,
-    "state": "EXECUTED",
-    "date": "2018-12-20T16:43:26.929246",
-    "operationAmount": {
-      "amount": "70946.18",
-      "currency": {
-        "name": "USD",
-        "code": "USD"
-      }
-    },
-    "description": "Перевод организации",
-    "from": "Счет 10848359769870775355",
-    "to": "Счет 21969751544412966366"
-  }
-   assert (transaction_formatted_info(transaction)) == """20.12.2018 Перевод организации
+    transaction = {"id": 214024827,
+                   "state": "EXECUTED",
+                   "date": "2018-12-20T16:43:26.929246",
+                   "operationAmount":
+                       {"amount": "70946.18",
+                        "currency":
+                            {"name": "USD",
+                             "code": "USD"}},
+                   "description": "Перевод организации",
+                   "from": "Счет 10848359769870775355",
+                   "to": "Счет 21969751544412966366"}
+
+    assert (transaction_formatted_info(transaction)) == """20.12.2018 Перевод организации
 Счет **5355 -> Счет **6366
 Сумма: 70946.18 USD\n"""
 
 
 def test_transaction_formatted_info_():
-   transaction = {
-    "id": 596171168,
-    "state": "EXECUTED",
-    "date": "2018-07-11T02:26:18.671407",
-    "operationAmount": {
-      "amount": "79931.03",
-      "currency": {
-        "name": "руб.",
-        "code": "RUB"
+    transaction = {
+        "id": 596171168,
+        "state": "EXECUTED",
+        "date": "2018-07-11T02:26:18.671407",
+        "operationAmount": {
+          "amount": "79931.03",
+          "currency": {
+            "name": "руб.",
+            "code": "RUB"
+          }
+        },
+        "description": "Открытие вклада",
+        "to": "Счет 72082042523231456215"
       }
-    },
-    "description": "Открытие вклада",
-    "to": "Счет 72082042523231456215"
-  }
-   assert (transaction_formatted_info(transaction)) == """11.07.2018 Открытие вклада
+    assert (transaction_formatted_info(transaction)) == """11.07.2018 Открытие вклада
 Счет **6215
 Сумма: 79931.03 руб.\n"""
