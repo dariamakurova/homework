@@ -83,6 +83,7 @@ def main():
 # выводим итоговый список транзакций
 
     print('Распечатываю итоговый список транзакций...\n')
+    # print(transactions_by_word) # временный
 
     if transactions_sorted:
         print(f'\nВсего банковских операций в выборке: {len(transactions_sorted)}\n')

@@ -3,7 +3,8 @@ from typing import Any, Iterator
 
 def filter_by_currency(transactions: list[dict], currency: str) -> Iterator[Any]:
     """Функция возвращает итератор, который поочередно выдает транзакции, где валюта операции соответствует заданной"""
-    return filter(lambda x: x.get("operationAmount", {}).get("currency", {}).get("code", {}) == currency, transactions)
+
+    return filter((lambda x: x.get("operationAmount", {}).get("currency", {}).get("code", {}) == currency or x.get("currency_code", {}) == currency), transactions)
 
 
 def transaction_descriptions(transactions: list[dict]) -> Iterator[Any]:
