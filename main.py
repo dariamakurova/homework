@@ -8,7 +8,8 @@ from src.utils import get_financial_operations
 
 
 def main():
-    """ Основная функция программы """
+    """ Основная функция программы  - выводит список банковских операций
+    по выбранным пользователем параметрам сортировки и фильтрации"""
 
     print('''
 Привет! Добро пожаловать в программу работы с банковскими транзакциями.
@@ -80,6 +81,7 @@ def main():
             transactions_sorted = sort_by_date(transactions_by_word)
     else:
         transactions_sorted = transactions_by_word
+
 # выводим итоговый список транзакций
 
     print('Распечатываю итоговый список транзакций...\n')

@@ -39,7 +39,7 @@ def get_status_choice() -> str | None:
 
 
 def get_choice_from_options(option_1: str, option_2: str) -> str | None:
-    """ Функция, которая проверяет ввод пользователя на соответствие предложенным вариантам"""
+    """Функция, которая проверяет ввод пользователя на соответствие предложенным вариантам"""
 
     while True:
         user_choice = input().lower()
@@ -47,19 +47,20 @@ def get_choice_from_options(option_1: str, option_2: str) -> str | None:
         if user_choice.lower() in available_options:
             return user_choice
         else:
-            print(f'Выберите {option_1} или {option_2}')
+            print(f"Выберите {option_1} или {option_2}")
 
 
 def transaction_formatted_info(transaction: dict) -> str:
-    """ Функция, которая выводит информацию о транзакции в заданном формате"""
+    """Функция, которая выводит информацию о транзакции в заданном формате"""
 
     date = get_date(transaction.get("date", ""))
     description = transaction.get("description", "")
-    if isinstance(transaction.get("description"), str) and re.search("перевод", transaction["description"],
-                                                                     re.IGNORECASE):
-        from_info = mask_account_card(transaction.get("from"))
+    if isinstance(transaction.get("description"), str) and re.search(
+        "перевод", transaction["description"], re.IGNORECASE
+    ):
+        from_info = mask_account_card(transaction.get("from", ""))
 
-    to_info = mask_account_card(transaction.get("to"))
+    to_info = mask_account_card(transaction.get("to", ""))
 
     if transaction.get("operationAmount", {}).get("amount"):
         amount = transaction.get("operationAmount", {}).get("amount", "")
@@ -72,13 +73,10 @@ def transaction_formatted_info(transaction: dict) -> str:
         currency = transaction.get("currency_name", "")
 
     transaction_format = ""
-    if isinstance(transaction.get("description"), str) and re.search("перевод", transaction["description"],
-                                                                     re.IGNORECASE):
-        transaction_format = (f'{date} {description}\n'
-                              f'{from_info} -> {to_info}\n'
-                              f'Сумма: {amount} {currency}\n')
+    if isinstance(transaction.get("description"), str) and re.search(
+        "перевод", transaction["description"], re.IGNORECASE
+    ):
+        transaction_format = f"{date} {description}\n" f"{from_info} -> {to_info}\n" f"Сумма: {amount} {currency}\n"
     else:
-        transaction_format = (f'{date} {description}\n'
-                              f'{to_info}\n'
-                              f'Сумма: {amount} {currency}\n')
+        transaction_format = f"{date} {description}\n" f"{to_info}\n" f"Сумма: {amount} {currency}\n"
     return transaction_format
